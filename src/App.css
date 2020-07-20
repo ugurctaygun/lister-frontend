@@ -1,0 +1,167 @@
+:root {
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #3c3c3c;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.app {
+  height: 100vh;
+}
+
+.background {
+  background-color: #3c3c3c;
+  padding-bottom: 50px;
+  padding-top: 80px;
+}
+
+.home {
+  background-color: #3c3c3c;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
+  column-count: 3;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  padding: 0px 50px 30px 50px;
+}
+
+@media (max-width: 1400px) {
+  .home {
+    column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+  }
+}
+
+@media (max-width: 920px) {
+  .home {
+    column-count: 1;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    padding: 10px 20px;
+  }
+}
+
+.alert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-light {
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.api-list {
+  counter-reset: steps;
+}
+.api-list li {
+  counter-increment: steps;
+  display: flex;
+  position: relative;
+}
+.api-list li::before {
+  content: counter(steps);
+  margin-right: 0.5rem;
+  background: #ff6f00;
+  color: white;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  line-height: 1.5em;
+  position: absolute;
+  top: 5px;
+  left: 3px;
+}
+
+.yt-list-item-mq {
+  flex-direction: row;
+}
+
+.textfield-mq {
+  width: 45% !important;
+}
+
+@media (max-width: 972px) {
+  .yt-list-item-mq {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 972px) {
+  .textfield-mq {
+    width: 80% !important;
+  }
+}
+
+.custom-api-search {
+  column-count: 2;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+@media (max-width: 1100px) {
+  .custom-api-search {
+    column-count: 1;
+  }
+}
+
+.card-content p {
+  margin: 5px;
+}
+
+.comment {
+  width: 60%;
+  height: 60px;
+  margin-left: 15px !important;
+}
+
+.comment * {
+  color: white !important;
+}
+
+.comment *::before,
+*::after {
+  border-bottom: 1px solid white !important;
+}
+
+.MuiCardContent-root.card-content:last-child {
+  padding-bottom: 16px;
+}
