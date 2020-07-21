@@ -8,7 +8,7 @@ export default () => (
       style={{
         width: "200px",
         margin: "250px auto",
-        paddingTop: "250px",
+        paddingTop: "100px",
         display: "block",
       }}
       alt="Loading..."
