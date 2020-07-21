@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       border: "1px solid white",
     },
+    "@media (max-width: 767px)": {
+      width: "95%",
+      padding: "10px",
+    },
   },
   subheader: {
     color: "#afaaaa",
@@ -44,6 +48,31 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     textAlign: "right",
     cursor: "pointer",
+  },
+  singleListContent: {
+    display: "flex",
+    "@media (max-width: 767px)": {
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  },
+  singleListDescription: {
+    marginLeft: "25px",
+    marginRight: "15px",
+    width: "80%",
+    "@media (max-width: 767px)": {
+      width: "100%",
+      margin: "0",
+      paddingTop: "5px",
+    },
+  },
+  comments: {
+    display: "flex",
+    width: "70%",
+    marginBottom: "30px",
+    "@media (max-width: 767px)": {
+      width: "100%",
+    },
   },
 }));
 
@@ -164,23 +193,13 @@ const SingleList = ({
                             width: "100%",
                           }}
                         >
-                          <div
-                            style={{
-                              display: "flex",
-                            }}
-                          >
+                          <div className={classes.singleListContent}>
                             <img
                               src={item.thumbnail || item.poster}
                               alt={item.title}
                               style={{ width: "150px" }}
                             />
-                            <div
-                              style={{
-                                marginLeft: "25px",
-                                marginRight: "15px",
-                                width: "80%",
-                              }}
-                            >
+                            <div className={classes.singleListDescription}>
                               <p style={{ fontWeight: "bold" }}>
                                 {item.title} {item.author && `- ${item.author}`}
                               </p>
@@ -252,14 +271,7 @@ const SingleList = ({
           <React.Fragment>
             {list.list.comments.map((comment, i) => {
               return (
-                <div
-                  key={comment.i}
-                  style={{
-                    display: "flex",
-                    width: "70%",
-                    marginBottom: "30px",
-                  }}
-                >
+                <div key={comment.i} className={classes.comments}>
                   <Avatar
                     aria-label="recipe"
                     style={{

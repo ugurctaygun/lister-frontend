@@ -21,7 +21,9 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get("/api/auth");
+    const res = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/api/auth`
+    );
 
     dispatch({
       type: USER_LOADED,
@@ -45,7 +47,11 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   const body = JSON.stringify({ name, email, password });
 
   try {
-    const res = await axios.post("/api/users", body, config);
+    const res = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/api/users`,
+      body,
+      config
+    );
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -77,7 +83,11 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post("/api/auth", body, config);
+    const res = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/api/auth`,
+      body,
+      config
+    );
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -108,7 +118,7 @@ export const addBookmark = (userID, listID) => async (dispatch) => {
   try {
     const res = await axios
       .create({
-        baseURL: "/api",
+        baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -135,7 +145,7 @@ export const removeBookmark = (userID, bookID, listID) => async (dispatch) => {
   try {
     await axios
       .create({
-        baseURL: "/api",
+        baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
         headers: {
           "Content-Type": "application/json",
         },

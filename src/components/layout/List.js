@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     "&:first-child": {
       marginTop: 0,
     },
+    "@media (max-width: 767px)": {
+      minWidth: "auto",
+    },
   },
   media: {
     width: "100%",
@@ -185,7 +188,11 @@ const List = ({ listItem, deleteList, auth, addBookmark, removeBookmark }) => {
                           <img
                             src={item.thumbnail || item.poster}
                             alt={item.title}
-                            style={{ width: "100px" }}
+                            style={
+                              item.thumbnail
+                                ? { width: "100px" }
+                                : { width: "100px", height: "150px" }
+                            }
                           />
                           <div style={{ marginLeft: "25px" }}>
                             <p>

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import { connect } from "react-redux";
 import { filterList } from "../../actions/list";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Filter = ({ lists, filteredLists, filterList }) => {
   const classes = useStyles();
+
+  const [smallScreen, setSmallScreen] = useState({
+    matches: window.matchMedia("(min-width: 768px)").matches,
+  });
+
+  useEffect(() => {
+    const handler = (e) => setSmallScreen({ matches: e.matches });
+    window.matchMedia("(min-width: 768px)").addListener(handler);
+  }, []);
+
+  console.log(smallScreen.matches);
 
   const tags = [
     { tag: "Movies" },
@@ -63,27 +75,50 @@ const Filter = ({ lists, filteredLists, filterList }) => {
     filterList(`${e.target.innerText}`);
   };
 
+  const changeHandler = (e) => {
+    filterList(`${e.target.value}`);
+  };
+
   return (
     <div style={{ width: "100%", display: "flex" }}>
-      <Card className={classes.root}>
-        <CardContent className="card-content">
-          <Chip
-            className={classes.tag}
-            label="Show All"
-            onClick={clickHandler}
-            variant="outlined"
-          />
-          {tags.map((item) => (
+      {smallScreen.matches ? (
+        <Card className={classes.root}>
+          <CardContent className="card-content">
             <Chip
               className={classes.tag}
-              style={{ backgroundColor: `${tagColor(item.tag)}` }}
-              label={item.tag}
+              label="Show All"
               onClick={clickHandler}
               variant="outlined"
             />
-          ))}
-        </CardContent>
-      </Card>
+            {tags.map((item) => (
+              <Chip
+                className={classes.tag}
+                style={{ backgroundColor: `${tagColor(item.tag)}` }}
+                label={item.tag}
+                onClick={clickHandler}
+                variant="outlined"
+              />
+            ))}
+          </CardContent>
+        </Card>
+      ) : (
+        <div
+          style={{
+            margin: "80px auto 20px auto",
+          }}
+        >
+          <Typography style={{ color: "white", marginBottom: "5px" }}>
+            Filter Topics
+          </Typography>
+          <select onChange={changeHandler}>
+            {tags.map((item) => (
+              <option key={item.tag} value={item.tag}>
+                {item.tag}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
     </div>
   );
 };

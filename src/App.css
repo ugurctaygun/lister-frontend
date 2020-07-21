@@ -32,9 +32,6 @@ body {
 
 .home {
   background-color: #3c3c3c;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
   column-count: 3;
   -webkit-column-count: 3;
   -moz-column-count: 3;
@@ -54,7 +51,7 @@ body {
     column-count: 1;
     -webkit-column-count: 1;
     -moz-column-count: 1;
-    padding: 10px 20px;
+    padding: 10px 10px;
   }
 }
 

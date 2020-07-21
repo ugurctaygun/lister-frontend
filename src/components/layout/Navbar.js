@@ -10,13 +10,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import StarBorderOutlined from "@material-ui/icons/StarBorderOutlined";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
 import Register from "../pages/Register";
@@ -185,20 +183,20 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logOut }) => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new stars" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <StarBorderOutlined />
-          </Badge>
+        <IconButton aria-label="Create New List" color="inherit">
+          <Link to="/create-list">
+            <AddBoxOutlinedIcon style={{ color: "black" }} />
+          </Link>
         </IconButton>
-        <p>Messages</p>
+        Create New
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
+        <IconButton aria-label="Favorites" color="inherit">
+          <Link to="/bookmarks">
+            <StarBorderOutlined style={{ color: "black" }} />
+          </Link>
         </IconButton>
-        <p>Notifications</p>
+        Favorites
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton

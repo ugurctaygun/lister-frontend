@@ -65,7 +65,9 @@ export const loadList = () => async (dispatch) => {
 //Load single list from url param
 export const loadListById = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/lists/${id}`);
+    const res = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/api/lists/${id}`
+    );
 
     dispatch({
       type: LIST_LOADED,
@@ -85,7 +87,7 @@ export const deleteList = (id) => async (dispatch) => {
   try {
     await axios
       .create({
-        baseURL: "/api",
+        baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -132,7 +134,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
   try {
     const res = await axios
       .create({
-        baseURL: "/api",
+        baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -159,7 +161,7 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
     await axios
       .create({
-        baseURL: "/api",
+        baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
         headers: {
           "Content-Type": "application/json",
         },
