@@ -45,5 +45,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://lister-backend.herokuapp.com/"
+  "proxy": "https://lister-backend.herokuapp.com/",
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
 }

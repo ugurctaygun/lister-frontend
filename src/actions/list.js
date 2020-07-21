@@ -45,7 +45,9 @@ export const createList = ({ title, tag, content, name }) => async (
 //Load lists
 export const loadList = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/lists");
+    const res = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/api/lists`
+    );
 
     dispatch({
       type: LISTS_LOADED,
