@@ -25,7 +25,11 @@ export const createList = ({ title, tag, content, name }) => async (
   const body = JSON.stringify({ title, tag, content, name });
 
   try {
-    const res = await axios.post("/api/lists", body, config);
+    const res = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/api/lists`,
+      body,
+      config
+    );
 
     dispatch({
       type: CREATE_LIST,

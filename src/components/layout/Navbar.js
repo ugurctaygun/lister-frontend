@@ -89,6 +89,13 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  anchorTag: {
+    textDecoration: "none",
+    fontSize: "1rem",
+    display: "flex",
+    alignItems: "flex-end",
+    color: "inherit",
+  },
 }));
 
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logOut }) => {
@@ -166,12 +173,36 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logOut }) => {
     >
       <MenuItem>Welcome {user === null ? "" : `${user.name}`}</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Create New List</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem>
+        <Link to="/create-list">Create New</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/bookmarks">Favorites</Link>
+      </MenuItem>
     </Menu>
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
+
+  const renderMobileAuthMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem>
+        <Login />
+      </MenuItem>
+      <MenuItem>
+        <Register />
+      </MenuItem>
+    </Menu>
+  );
+
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -184,21 +215,21 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logOut }) => {
     >
       <MenuItem>
         <IconButton aria-label="Create New List" color="inherit">
-          <Link to="/create-list">
+          <Link className={classes.anchorTag} to="/create-list">
             <AddBoxOutlinedIcon style={{ color: "black" }} />
+            Create New
           </Link>
         </IconButton>
-        Create New
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="Favorites" color="inherit">
-          <Link to="/bookmarks">
+          <Link className={classes.anchorTag} to="/bookmarks">
             <StarBorderOutlined style={{ color: "black" }} />
+            Favorites
           </Link>
         </IconButton>
-        Favorites
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={handleLogout}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -207,7 +238,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logOut }) => {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>Logout</p>
       </MenuItem>
     </Menu>
   );
@@ -270,7 +301,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logOut }) => {
           </div>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
+      {!isAuthenticated ? renderMobileAuthMenu : renderMobileMenu}
       {renderMenu}
     </div>
   );
