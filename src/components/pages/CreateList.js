@@ -23,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     margin: "50px auto",
     backgroundColor: "white",
+    "@media (max-width: 767px)": {
+      width: "100%",
+      padding: "10px",
+      margin: "25px auto",
+    },
   },
   root: {
     "& .MuiTextField-root": {
@@ -34,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
+  },
+  titleTag: {
+    width: "50%",
+    "@media (max-width: 767px)": {
+      width: "90%",
+    },
   },
 }));
 
@@ -122,7 +133,7 @@ const CreateList = ({ createList, auth: { user } }) => {
               label="Title"
               name="title"
               value={title}
-              style={{ width: "50%" }}
+              className={classes.titleTag}
               onChange={(e) => onChange(e)}
               helperText="Enter a title for your list"
             />
@@ -131,7 +142,8 @@ const CreateList = ({ createList, auth: { user } }) => {
               select
               label="Tag"
               name="tag"
-              style={{ width: "50%", paddingBottom: "50px" }}
+              className={classes.titleTag}
+              style={{ paddingBottom: "50px" }}
               value={tag}
               onChange={(e) => onChange(e)}
               helperText="Please select a tag for your list"
@@ -152,9 +164,10 @@ const CreateList = ({ createList, auth: { user } }) => {
                 aria-label="disabled tabs example"
               >
                 <Tab label="Custom List" />
-                <Tab label="Youtube Video List" />
-                <Tab label="Movie List" />
                 <Tab label="Book List" />
+
+                <Tab label="Movie List" />
+                <Tab label="Youtube Video List" />
               </Tabs>
             </div>
 
@@ -162,16 +175,17 @@ const CreateList = ({ createList, auth: { user } }) => {
               <TextEditor handleEditor={handleEditor} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <YouTubeList handleYouTube={handleYouTube} />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              <MovieList handleMovie={handleMovie} />
-            </TabPanel>
-            <TabPanel value={value} index={3}>
               <BookList
                 handleBook={handleBook}
                 handleBookRemove={handleBookRemove}
               />
+            </TabPanel>
+
+            <TabPanel value={value} index={2}>
+              <MovieList handleMovie={handleMovie} />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+              <YouTubeList handleYouTube={handleYouTube} />
             </TabPanel>
 
             <Button
