@@ -85,10 +85,12 @@ const CreateList = ({ createList, auth: { user } }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("form submitted");
     getUserName();
     createList({ title, tag, content, name });
     setFormData({ title: "", tag: "", content: "", name: "" });
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
   };
 
   const handleEditor = (e) => {

@@ -84,11 +84,11 @@ const SingleList = ({
   deleteComment,
   auth,
 }) => {
-  const test = match.params.id;
+  const params = match.params.id;
 
   useEffect(() => {
-    loadListById(test);
-  }, [loadListById, test]);
+    loadListById(params);
+  }, [loadListById, params]);
 
   const classes = useStyles();
   const [text, setText] = useState("");
