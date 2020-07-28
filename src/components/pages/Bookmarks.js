@@ -9,6 +9,10 @@ const Bookmarks = ({ loadList, auth, list: { lists } }) => {
 
   useEffect(() => {
     loadList();
+    console.log("test2");
+  }, [loadList]);
+
+  useEffect(() => {
     if (auth.user && lists) {
       const bookmarked = auth.user.bookmarks.map((bookmark) => bookmark.list);
       const filtered = lists.filter((item) => {
@@ -16,7 +20,7 @@ const Bookmarks = ({ loadList, auth, list: { lists } }) => {
       });
       setBookmarkedLists(filtered);
     }
-  }, [loadList, auth, lists]);
+  }, [auth, lists]);
 
   if (auth.loading) {
     return <Spinner />;
