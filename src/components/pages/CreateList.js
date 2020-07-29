@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       padding: "10px",
       margin: "25px auto",
+      borderRadius: "0",
     },
   },
   root: {
@@ -164,10 +165,10 @@ const CreateList = ({ createList, auth: { user } }) => {
                 textColor="primary"
                 onChange={handleTabs}
                 aria-label="disabled tabs example"
+                className="create-list-tabs"
               >
                 <Tab label="Custom List" />
                 <Tab label="Book List" />
-
                 <Tab label="Movie List" />
                 <Tab label="Youtube Video List" />
               </Tabs>

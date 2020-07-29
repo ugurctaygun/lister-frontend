@@ -198,3 +198,8 @@ body {
     opacity: 0;
   }
 }
+@media (max-width: 600px) {
+  .create-list-tabs > div {
+    overflow: scroll !important;
+  }
+}

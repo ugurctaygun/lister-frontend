@@ -14,6 +14,8 @@ const Home = ({ loadList, list: { lists, filteredLists }, list }) => {
     return <Spinner />;
   }
 
+  console.log(lists);
+
   const filterActive = filteredLists.map((listItem, i) => (
     <List key={i} listItem={listItem} />
   ));

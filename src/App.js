@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -12,6 +12,7 @@ import Alert from "./components/layout/Alert";
 import SingleList from "./components/pages/SingleList";
 import CreateList from "./components/pages/CreateList";
 import Bookmarks from "./components/pages/Bookmarks";
+import PrivateRoute from "./components/routing/PrivateRoute";
 //CSS
 import "./App.css";
 
@@ -31,9 +32,11 @@ const App = (props) => {
           <Navbar />
           <Route exact path="/" component={Home} />
           <Alert />
-          <Route exact path="/create-list" component={CreateList} />
           <Route exact path="/lists/:id" component={SingleList} />
-          <Route exact path="/bookmarks" component={Bookmarks} />
+          <Switch>
+            <PrivateRoute exact path="/create-list" component={CreateList} />
+            <PrivateRoute exact path="/bookmarks" component={Bookmarks} />
+          </Switch>
         </div>
       </Router>
     </Provider>

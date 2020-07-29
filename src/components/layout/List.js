@@ -15,6 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import TextsmsOutlinedIcon from "@material-ui/icons/TextsmsOutlined";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Chip from "@material-ui/core/Chip";
 import Typography from "@material-ui/core/Typography";
@@ -231,6 +232,14 @@ const List = ({ listItem, deleteList, auth, addBookmark, removeBookmark }) => {
       <CardActions disableSpacing style={{ width: "100%" }}>
         <AddToFav user={auth.user} list={listItem} />
 
+        <IconButton aria-label="Up vote" style={{ color: "#f50057" }}>
+          <Typography
+            style={{ color: "white", paddingTop: "4px", marginRight: "6px" }}
+          >
+            35
+          </Typography>
+          <ThumbUpIcon style={{ color: "white" }} />
+        </IconButton>
         <Link
           to={`lists/${listItem._id}`}
           style={{
